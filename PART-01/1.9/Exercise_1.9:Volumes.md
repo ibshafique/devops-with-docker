@@ -1,11 +1,11 @@
 An empty named ```text.log``` is created using:
 ```sh
-sudo touch /PART-01/1.9/Exercise_1.9:Volumes.md/text.log
+ishraque@ishraque-laptop:~sudo touch /PART-01/1.9/Exercise_1.9:Volumes.md/text.log
 ```
 
 The following is used to run the container with a persistent volume attached to it:
 ```sh
-sudo docker run --rm -it \
+ishraque@ishraque-laptop:~ sudo docker run --rm -it \
 -v "$(pwd)/PART-01/1.9/text.log:/usr/src/app/text.log" \
 devopsdockeruh/simple-web-service
 ```
