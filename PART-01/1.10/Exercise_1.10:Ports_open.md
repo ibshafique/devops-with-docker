@@ -5,7 +5,7 @@ ishraque@ishraque-laptop:~$ sudo docker run -it --rm -p 8080:8080 web-server
 ```
 
 The following is shown in a web-browser when accessed through localhost:8080 :
-![localhost:8080](./PART-01/1.10/browser_screenshot.png)
+![localhost:8080](./browser_screenshot.png)
 
 The following output is shown in the terminal:
 
