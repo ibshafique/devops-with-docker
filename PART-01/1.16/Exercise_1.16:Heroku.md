@@ -1,12 +1,9 @@
-## Heroku App Link https://dwd-heroku-app.herokuapp.com/presses/new
----
-
 The docker image is pulled from DockerHub using:
 ```sh
 ishraque@ishraque-laptop:~$ sudo docker pull devopsdockeruh/heroku-example
 ```
 
-Heroku cli is installed  and login using:
+Heroki cli is installed  and login using:
 ```sh
 ishraque@ishraque-laptop:~$ sudo snap install heroku --classic; heroku login; \
                             heroku container:login
