@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend
+    ports:
+      - 5000:5000
+    container_name: frontend
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile-backend
+    ports:
+      - 8080:8080
+    environment:
+      - REDIS_HOST=redis
+    container_name: backend
+
+  redis_server:
+    image: redis
+    ports:
+      - 6379:6379
+    restart: unless-stopped
+    container_name: redis
