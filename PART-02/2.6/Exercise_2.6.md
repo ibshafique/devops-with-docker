@@ -8,7 +8,7 @@ The required changes are made to the ```docker-compose.yml``` file:
 The following command is used to run the containers:
 
 ```sh
-ishraque@ishraque-laptop:~$ docker-compose -f ./PART-02/2.5/scaling-exercise/docker-compose.yml up -d
+ishraque@ishraque-laptop:~$ docker-compose -f ./PART-02/2.5/docker-compose.yml up -d
 ```
 
 The webserver can be accessed from the browser
@@ -20,5 +20,5 @@ The webserver can be accessed from the browser
 The following command is used to turn down the containers:
 
 ```sh
-ishraque@ishraque-laptop:~$ docker-compose -f ./PART-02/2.5/scaling-exercise/docker-compose.yml down -v
+ishraque@ishraque-laptop:~$ docker-compose -f ./PART-02/2.5/docker-compose.yml down -v
 ```
