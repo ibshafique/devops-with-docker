@@ -1,0 +1,63 @@
+version: "3.8"
+
+services:
+  frontend_server:
+    image: frontend
+    build: 
+      context: .
+      dockerfile: Dockerfile-frontend
+    ports:
+      - 5000:5000
+    container_name: frontend
+
+
+  backend_server:
+    image: backend
+    build: 
+      context: .
+      dockerfile: Dockerfile-backend
+    ports:
+      - 8080:8080
+    environment:
+      - REDIS_HOST=redis_server
+      - POSTGRES_HOST=postgres_server
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DATABASE=postgres
+      - FRONT_URL=http://localhost
+    container_name: backend
+    depends_on:
+      - postgres_server
+      - redis_server
+
+  redis_server:
+    image: redis
+    restart: unless-stopped
+    container_name: redis
+
+  postgres_server:
+    image: postgres:13.2-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - database:/var/lib/postgresql/data
+    container_name: postgres
+
+  reverse_proxy:
+    image: nginx:1.19-alpine
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+    environment:
+      - NGINX_PORT=80
+    container_name: nginx_proxy
+    depends_on:
+      - backend_server
+      - frontend_server
+
+volumes:
+  database:
